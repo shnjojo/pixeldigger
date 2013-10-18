@@ -1,13 +1,32 @@
 {
   "manifest_version": 2,
-
   "name": "Pixel Digger",
   "description": "This extension is just like the pixelperfect on firebug, to  compare the design & the html.",
-  "version": "1.0",
+  "version": "0.1",
 
   "permissions": [
-    "https://secure.flickr.com/"
+    "tabs", 
+    "http://*/*", 
+    "https://*/*",
+    "\u003Call_urls\u003E", 
+    "unlimitedStorage"
   ],
+  
+	"content_scripts": [
+    {
+		"matches": ["http://www.cnblogs.com/*"],
+		"js": ["jquery-2.0.3.min.js", "content_script.js"]
+	  }
+  ],
+  
+  "background": { 
+    "scripts": ["jquery-2.0.3.min.js", "background.js"]
+  },
+  
+  "web_accessible_resources": [
+    "jquery-2.0.3.min.map"
+  ],
+  
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
